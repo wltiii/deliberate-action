@@ -1,60 +1,15 @@
-import os
-import subprocess
+print('Deliberate Action - Plan, Do, Reflect - and Learn')
+print('.... Refine your mental models ....')
 
+time_allotment = 25
+time_unit = 'minutes'
 
+intention = input(f'What do you plan to do in the next {time_allotment} {time_unit}? ')
+experience = input(f'What happened during the allotted time? ')
+difference = input(f'What explains the difference? ')
+action = input(f'What action can you take to improve outcomes? ')
 
-origWD = os.getcwd()
-print(origWD)
-
-msg = "repo.py runs repo commands"
-print(msg)
-
-result = subprocess.run(["ls", "-l"], capture_output=True, text=True)
-print("return code is:")
-print(result.returncode)
-print('stdout is:')
-print(result.stdout)
-print('stderr is:')
-print(result.stderr)
-
-msg = "changing directory"
-print(msg)
-
-os.chdir("/home/worldwidewilly/workspace/workman")
-result = subprocess.run(["ls", "-l"], capture_output=True, text=True)
-# print("return code is:")
-print(f'return code is: {result.returncode}.')
-# print(result.returncode)
-print(f'stdout is: {result.stdout}.')
-# print(result.stdout)
-print(f'stderr is: {result.stderr if result.stderr else ""}.')
-# print(result.stderr)
-
-msg = "reverting to original directory"
-print(msg)
-
-os.chdir(origWD)
-result = subprocess.run(["ls", "-l"], capture_output=True, text=True)
-print("return code is:")
-print(result.returncode)
-print('stdout is:')
-print(result.stdout)
-print('stderr is:')
-print(result.stderr)
-
-# print("checking navigation")
-# result = subprocess.run(["cd", "/home/worldwidewilly/workspace"], capture_output=True, text=True)
-# print("return code is:")
-# print(result.returncode)
-# print('stdout is:')
-# print(result.stdout)
-# print('stderr is:')
-# print(result.stderr)
-
-# result = subprocess.run(["ls", "-l"], capture_output=True, text=True)
-# print("return code is:")
-# print(result.returncode)
-# print('stdout is:')
-# print(result.stdout)
-# print('stderr is:')
-# print(result.stderr)
+print(f'Intention = {intention}.')
+print(f'Experience = {experience}.')
+print(f'Difference = {difference}.')
+print(f'Action = {action}.')
