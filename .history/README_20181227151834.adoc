@@ -1,0 +1,37 @@
+= Task Tracking Extraordinaire
+Bill Turner
+:toc:
+:toc-placement!:
+
+toc::[]
+
+== Overview ==
+The intent is to have a simple tool that:
+. Works on multiple platforms:
+.. Works on both smart phones and web pages.
+.. Data updated on one device is immediately propogated to all devices.
+. Provides an implementation of related task and time management tools:
+.. Pomodoro planning
+.. Urgent/Important matrix - (Eisenhower & Covey)
+.. After action report
+.. Time Tracking
+. Multiple projects
+.. Tasks and subtasks
+.. Time recording at any level
+. Configurable:
+.. Pomodoro increments
+.. Features used in task
+
+The philosophy is that the smaller the unit of work, the better. By planning tasks that are no more
+than the Pomodoro allotted time, they are kept simple, understandable, unsurprising. This is the basic
+element of this tool.
+
+After action reports are essential. They allow you to consider what happened, what you want to reinforce
+and what you can do to improve. Coupling this to the Pomodoro intervals means it will be fresh in your
+mind and can help you see patterns.
+
+The use of urgent/important task identification allows you to 
+
+include::STYLE_GUIDE.asciidoc[]
+
+include::TODO.asciidoc[]

@@ -1,0 +1,21 @@
+= Task Tracking Extraordinaire
+Bill Turner
+:toc:
+:toc-placement!:
+
+toc::[]
+
+:website: tbd
+
+
+Version 0.0.1 (2019-01-01)
+---------------------------
+.Release highlights
+Initial release
+
+.Other additions and changes
+- none
+
+
+.Bug fixes
+- none

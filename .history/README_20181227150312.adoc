@@ -1,0 +1,172 @@
+= Task Tracking Extraordinaire
+Bill Turner
+:toc:
+:toc-placement!:
+
+toc::[]
+
+== Overview ==
+The intent is to have a simple tool that:
+. Works on multiple platforms:
+.. Works on both smart phones and web pages.
+.. Data updated on one device is immediately propogated to all devices.
+. Provides an implementation of related task and time management tools:
+.. Pomodoro planning
+.. 
+
+== Goals ==
+
+I believe that what was wanted was something that not only worked, but also demonstrated:
+
+. Design skills
+. Knowledge of Groovy
+. Knowledge of unit testing, in particular with Spock
+. Coding practice
+
+In addition, by developing this, I was able to demonstrate other things.
+
+. Knowledge of current architectural practices, i.e. microservices, which demonstrates an
+awareness of trends in the field
+. The ability to come up to speed quickly with technologies of which I have little or
+no knowledge. I had never used DropWizard nor Drools before developing this solution.
+. The ability to deliver a working solution in the time span typically available for a
+story.
+
+== Architecture Overview ==
+All applications can be solved in a myriad of ways. After reading the requirements, I chose to
+create a solution as a set of three microservices: *_activity_*, _forecast_, and _suggestion_
+(see https://github.com/wltiii). Herein, when I speak of the application, I am referring to
+the solution as a whole. Mention of one of the specific microservices is placing what is
+being discussed in that context.
+
+Activity is an orchestrator. It manages calls to the other services and returns suggestions.
+Forecast calls other weather forecasting services (at present only one) and merges those
+results into a common response. Suggestion wraps a rules engine which takes weather conditions
+and returns a suggested activity.
+
+image::images/architecture.png[Outdoor Activities Suggestor Architecture]
+
+=== Endpoint Design ===
+
+.Activity Service Method/URI Definitions
+|===
+|Method |URI or template |Purpose |Notes
+
+|GET
+|/activities
+|Returns the possible activities that can be suggested.
+|Not yet implemented.
+
+|GET
+|/activities/states
+|Returns the states for which activities can be provided.
+|Not yet implemented.
+
+|GET
+|/activities/states/{state}
+|Request activity suggestions for the given state
+|Not yet implemented. How to as weather can vary dramatically from region to region?
+
+|GET
+|/activities/states/{state}/cities
+|Returns the cities for which activities can be provided.
+|Not yet implemented.
+
+|GET
+|/activities/states/{state}/cities/{city}
+|Request activity suggestions for the given city and state
+|This is the only endpoint implemented. Could be improved with time of day suggestions.
+
+|GET
+|/activities/states/{state}/cities/{city}/dates
+|Returns the dates for which activities can be provided.
+|Not yet implemented.
+
+|GET
+|/activities/states/{state}/cities/{city}/dates/{date}
+|Request activity suggestions for the given city, state and date.
+|Not yet implemented. Could be useful for planning ahead.
+
+|PUT
+|n/a
+|na
+|This does not provide create/update capabilities
+
+|PATCH
+|n/a
+|na
+|This does not provide create/update capabilities
+
+|POST
+|n/a
+|na
+|This does not provide create/update capabilities
+
+|DELETE
+|n/a
+|na
+|This does not provide create/update capabilities
+|===
+
+=== Technology Stack ===
+Below is a list of technologies used in the development of Activity.
+
+* Groovy 2.3.6
+* JVM: 1.8.0_45 Vendor: Oracle Corporation
+* OS: Linux Mint 17
+* Spock 0.7-groovy-2.0
+* DropWizard 0.7.1
+* Gradle 2.0
+
+== Getting Started ==
+Install the following tools if you do not already have them:
+
+ . If you don't have already, install Java (see the Technology Stack section for
+   versions used).
+ . Install GVM (see http://gvmtool.net/) if it is available for your OS, then use it
+   to install Groovy and Gradle. Alternatively, search the web for installation instructions.
+ . Install git (see https://git-scm.com/).
+ . Clone the activity, forecast and suggestion projects in your projects home directory. Be
+   sure to read and perform any additional setup as outlined in the related project's
+   README Getting Started section.
+ . Navigate into the project directory, for example [projects home]/activity.
+// . Change the settings in `activities.yml` to have your application run on a
+//   port your choosing.
+ . Run command `gradle build`.
+ . Run command `gradle fatJar`.
+ . Run command `gradle run`.
+ . Once all three of the services have been started -- activity, forecast and
+   suggestion -- you can verify installation by navigating your web browser to
+   `http://localhost:9000/activities/states/MN/cities/Minneapolis`.
+
+// being sure to use your port settings, if changed.
+
+
+
+If you are unfamiliar with Gradle, it is a powerful build automation tool. The `gradle.build`
+file contained within the project contains a number of plugins that extend the functionality
+of the tool. One of these is the Eclipse plugin. This plugin can be used to generate an Eclipse
+project, which you can import. There is a similar plugin, not contained within the build file,
+for IntelliJ IDEA. You are strongly encouraged to run `gradle tasks` for a list of all available
+targets.
+
+
+== Disclaimer ==
+Not having access to a user nor analyst is not a natural condition. There were conflicting
+or unclear requirements that needed resolution. Also, other design choices would
+have been made having someone available.
+
+The very first requirement is unclear. What does _a good day to do things outside *for the week*_
+actually mean? This also conflicted
+with the requirement to take a location and a date(s). Discussing this with
+colleagues, we agreed that the default action of passing a city and state would suggest
+activities for each day of the week. The endpoints were purposely designed to allow for
+retrieving suggestions in multiple ways.
+
+This cannot be considered production ready. I viewed this as a story that would have
+further stories addressing issues such as authorization, as well as implementing the
+other endpoints.
+
+include::STYLE_GUIDE.asciidoc[]
+
+include::TODO.asciidoc[]

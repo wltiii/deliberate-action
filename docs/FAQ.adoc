@@ -1,0 +1,14 @@
+= Frequently Asked Questions
+Bill Turner
+:toc:
+:toc-placement!:
+
+toc::[]
+
+== FAQs ==
+. What is this?
++
+A great tool!
+. Why do I need it?
++
+Make life better
