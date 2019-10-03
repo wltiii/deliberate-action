@@ -1,3 +1,5 @@
+import json
+
 print('Deliberate Action - Plan, Do, Reflect - and Learn')
 print('.... Refine your mental models ....')
 
@@ -9,7 +11,15 @@ experience = input(f'What happened during the allotted time? ')
 difference = input(f'What explains the difference? ')
 action = input(f'What action can you take to improve outcomes? ')
 
-print(f'Intention = {intention}.')
-print(f'Experience = {experience}.')
-print(f'Difference = {difference}.')
-print(f'Action = {action}.')
+report = {
+   'intention' : f'{intention}',
+   'experience' : f'{experience}',
+   'difference' : f'{difference}',
+   'action' : f'{action}'
+}
+
+# convert into JSON:
+y = json.dumps(report)
+
+# the result is a JSON string:
+print(y)
