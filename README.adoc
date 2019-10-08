@@ -45,6 +45,39 @@ keep it simple so that I may _learn_, _reflect_ and modify my _practice_.
 
 // include::docs/FAQ.adoc[]
 
-include::docs/TODO.adoc[]
+== Considerations For Future Releases ==
+. A goal setting template? How would that work?
+. Works on multiple platforms:
+.. Works on both smart phones and web pages.
+.. Data updated on one device is immediately propogated to all devices.
+. Provides an implementation of related task (activity) and time management practices:
+.. Pomodoro planning
+.. Urgent/Important matrix - (Eisenhower & Covey)
+.. After action report
+.. Time Tracking
+.. Incorporates knowledge of Chronotypes
+. Activities that
+.. Contain zero or more sub-activites
+.. Time recording at any level
+. Configurable:
+.. Pomodoro interval lengths
+.. Features used in activity
+.. Activities can be scheduled with specific start/stop times, complete with alarms.
+.. Templates exist to quickly setup various types of activities.
+... Workday templates, for example, could have time allotted to recurring/regular activities.
+. Integrate with google calendars
 
-include::docs/RELEASE_NOTES.adoc[]
+
+== Ideas, Issues and Opportunities ==
+None that are not listed above.
+
+== Version 0.0.1 (2019-01-01)
+.Release highlights
+Initial release
+
+.Other additions and changes
+- none
+
+
+.Bug fixes
+- none
