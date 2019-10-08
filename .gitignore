@@ -4,3 +4,15 @@
 
 # Logs
 logs/*
+
+# sound files
+*.mp3
+*.wav
+*.flac
+action/__pycache__/simpleaudio_alarm.cpython-36.pyc
+
+# source files neither ready to delete entirely and ultimately do not want to add
+action/playsound-alarm.py
+action/pydub-alarm.py
+action/pygame-mixer-alarm.py
+action/vlc-alarm.py

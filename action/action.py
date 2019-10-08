@@ -1,5 +1,8 @@
 import json
 from datetime import datetime, timezone
+# from simpleaudio-alarm import ring
+# import pydub-alarm
+from simpleaudio_alarm import ring
 
 print('Deliberate Action - Plan, Do, Reflect - and Learn')
 print('.... Refine your mental models ....')
@@ -8,6 +11,7 @@ time_allotment = 25
 time_unit = 'minutes'
 
 goal = input(f'What do you plan to do in the next {time_allotment} {time_unit}? ')
+ring()
 starttime = datetime.now(timezone.utc)
 session = {}
 session['name'] = 'sample'
