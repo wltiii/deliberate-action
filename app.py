@@ -1,9 +1,10 @@
+import os
 from flask import Flask
 from flask import Response
 from flask_pymongo import PyMongo
 from bson.json_util import dumps
 from bson.objectid import ObjectId
-from flask import jsonify, request
+from flask import jsonify, request, json
 import logging
 logging.basicConfig(filename='app.log',level=logging.DEBUG, format='%(asctime)s %(message)s')
 
@@ -13,14 +14,14 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    return 'Hello World!'
+    return 'Deliberate Practice, Deliberate Action .... Refine your mental models ....'
 
 @app.route('/templates')
 def getTemplates():
     logging.debug('getTemplates()')
     templates = mongo.db.templates.find({})
     resp = dumps(templates)
-    return resp
+    return Response(resp, mimetype='application/json')
 
 @app.route('/templates/<id>')
 def findById(id):
@@ -47,7 +48,11 @@ def findByKey(type, name, user):
 @app.route('/templates/default')
 def getDefaultTemplate():
     logging.debug('getDefaultTemplate()')
-    return findByKey('session', 'default', 0)
+
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "static/templates", "session-template-default.json")
+    resp = dumps(json.load(open(json_url)))
+    return Response(resp, mimetype='application/json')
 
 @app.route('/sessions')
 def getSessions():
