@@ -1,0 +1,15 @@
+{
+    "type": "session",
+    "name": "default",
+    "user": 0,
+    "description": "The default set of plan/result questions, duration, etc.",
+    "durationInSeconds": 1500,
+    "preQuestions": [
+        "What do you plan to do this session?"
+    ],
+    "postQuestions": [
+        "What happened during the allotted time?",
+        "What explains the difference?",
+        "What action can you take to improve outcomes?"
+    ]
+}
