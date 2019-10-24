@@ -6,10 +6,13 @@ Bill Turner
 toc::[]
 
 == Overview ==
+Deliberate Practice, Deliberate Action
+....Refine your mental models....
+
 In the early days of Agile, you would often hear an argument about whether software development is an
 art or a craft. In my opinion, it is neither. It seems to me to more closely resemble a learning activity,
 one that is closer to scientific experimentation. You have a hypothesis of how something should work,
-you build a test apparatus, and you test hypotheses.
+you build a test apparatus, and you test the hypotheses. Okay - so not a perfect analogy.
 
 Listening to colleagues during the midst of a project, or even something as small as a story or task, you
 will often hear them talk of what they learned.

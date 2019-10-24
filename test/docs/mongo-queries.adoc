@@ -1,0 +1,23 @@
+= Mongodb Queries
+Samples for crud operations agains various collections.
+
+These are meant to assist in development.
+*These may not reflect what the data actually should be.* Use at your own risk.
+
+.Insert into templates
+----
+db.getCollection('templates').insert({"type": "session",
+    "name": "default",
+    "user": NumberLong(0),
+    "description": "The default set of plan/result questions, duration, etc.",
+    "durationInSeconds": NumberInt(1500),
+    "preQuestions": [
+        "What do you plan to do this session?"
+    ],
+    "postQuestions": [
+        "What happened during the allotted time?",
+        "What explains the difference?",
+        "What action can you take to improve outcomes?"
+    ]
+})
+----
