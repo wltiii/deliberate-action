@@ -4,9 +4,40 @@ Samples for crud operations agains various collections.
 These are meant to assist in development.
 *These may not reflect what the data actually should be.* Use at your own risk.
 
+== Sessions
+.Insert into sessions
+----
+db.getCollection('sessions').insert({
+    "user": NumberLong(0),
+    "template_id": "default",
+    "startDateTime": new Date(),
+    "endDateTime": new Date(),
+    "preResponses": [
+        "Provide a session example."
+    ],
+    "postResponses": [
+        "I created a session.",
+        "Not applicable. Achieved my goal.",
+        "Figure out needs a bit better."
+    ]
+})
+----
+
+.Remove (delete) by id
+----
+db.getCollection('sessions').remove({"_id": ObjectId("5db1e1d9ba5064296d76597b")})
+----
+
+== Templates
+*_Templates are not currently implemented._*
+
+The below shows a default session template being inserted. The default session template is
+currently loaded from assets.
+
 .Insert into templates
 ----
-db.getCollection('templates').insert({"type": "session",
+db.getCollection('templates').insert({
+    "type": "session",
     "name": "default",
     "user": NumberLong(0),
     "description": "The default set of plan/result questions, duration, etc.",
@@ -20,4 +51,58 @@ db.getCollection('templates').insert({"type": "session",
         "What action can you take to improve outcomes?"
     ]
 })
+----
+
+
+.Find template by id
+----
+db.getCollection('templates').find({"_id": ObjectId("5db0badaba5064296d765979")})
+----
+
+.Find all templates
+----
+db.getCollection('templates').find({})
+----
+
+.Find a specific template by key
+----
+db.getCollection('templates').find({
+    "type": "session",
+    "name": "default",
+    "user": 0})
+----
+
+== Users
+*_Users are not currently implemented._*
+
+Field user-id, may not be necessary. If it is,
+it should be a unique key and an some sort of strategy should be defined for auto setting it's value.
+
+Probably would want an email address and user name (at the minimum).
+
+.Insert into Users (Rocky)
+----
+db.getCollection('users').insert({
+  "user-id": 1,
+  "family-name": "Squirrel",
+  "surname": "Rocket",
+  "middle-initial": "J",
+  "preferred-name": "Rocky"
+})
+----
+
+.Insert into Users (Bullwinkle)
+----
+db.getCollection('users').insert({
+  "user-id": 2,
+  "family-name": "Moose",
+  "surname": "Bullwinkle",
+  "middle-initial": "J",
+  "preferred-name": "Bullwinkle"
+})
+----
+
+.Find User by user-id
+----
+db.getCollection('users').find({"user-id": 0})
 ----

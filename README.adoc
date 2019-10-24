@@ -74,7 +74,7 @@ keep it simple so that I may _learn_, _reflect_ and modify my _practice_.
 == Ideas, Issues and Opportunities ==
 None that are not listed above.
 
-== Version 0.0.1 (2019-01-01)
+== Version 0.0.1 (2019-10-24)
 .Release highlights
 Initial release
 
