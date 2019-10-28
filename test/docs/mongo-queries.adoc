@@ -5,7 +5,63 @@ These are meant to assist in development.
 *These may not reflect what the data actually should be.* Use at your own risk.
 
 == Sessions
-.Insert into sessions
+.Find sessions
+----
+db.getCollection('sessions').find({})
+----
+
+.Result
+----
+[
+    {
+    "_id" : ObjectId("5db1e3afba5064296d76597c"),
+    "user" : NumberLong(0),
+    "template_id" : "default",
+    "startDateTime" : ISODate("2019-10-24T17:47:28.001Z"),
+    "endDateTime" : ISODate("2019-10-24T17:47:28.001Z"),
+    "preResponses" : [
+        "Provide a session example."
+    ],
+    "postResponses" : [
+        "I created a session.",
+        "Not applicable. Achieved my goal.",
+        "Figure out needs a bit better."
+    ]
+    },
+    {
+        "_id" : ObjectId("5db1f0d7e3fd62ea7a00eeb8"),
+        "user" : 0,
+        "template_id" : "default",
+        "startDateTime" : "2019-10-24T18:28:01Z",
+        "endDateTime" : "2019-10-24T18:53:01Z",
+        "preResponses" : [
+            "Provide a session example."
+        ],
+        "postResponses" : [
+            "I created a session.",
+            "Not applicable. Achieved my goal.",
+            "Figure out needs a bit better."
+        ]
+    },
+    {
+        "_id" : ObjectId("5db1f1347d5faf33b58a2297"),
+        "user" : 1,
+        "template_id" : "default",
+        "startDateTime" : "2019-10-24T18:28:01Z",
+        "endDateTime" : "2019-10-24T18:53:01Z",
+        "preResponses" : [
+            "Provide a session example."
+        ],
+        "postResponses" : [
+            "I created a session.",
+            "Not applicable. Achieved my goal.",
+            "Figure out needs a bit better."
+        ]
+    }
+]
+----
+
+.Insert sessions
 ----
 db.getCollection('sessions').insert({
     "user": NumberLong(0),
@@ -26,6 +82,59 @@ db.getCollection('sessions').insert({
 .Remove (delete) by id
 ----
 db.getCollection('sessions').remove({"_id": ObjectId("5db1e1d9ba5064296d76597b")})
+----
+
+.Update sessions.templateId by id
+----
+db.getCollection('sessions').updateOne(
+    {"_id": ObjectId("5db21f0172f49650801f2902")},
+    {$set: {"template_id": "new default"}})
+----
+
+.Result
+----
+{
+    "acknowledged" : true,
+    "matchedCount" : 1.0,
+    "modifiedCount" : 1.0
+}
+----
+
+.Update sessions.postResponses by id
+----
+db.getCollection('sessions').updateOne(
+    {"_id": ObjectId("5db21f0172f49650801f2902")},
+    {$set: {"postResponses": [
+        "I updated post responses.",
+        "Did it.",
+        "Look for better examples."
+    ]}})
+----
+
+.Result
+----
+{
+    "acknowledged" : true,
+    "matchedCount" : 1.0,
+    "modifiedCount" : 1.0
+}
+----
+
+.Update one sessions.postResponses by id
+----
+db.getCollection('sessions').updateOne(
+    { "_id": ObjectId("5db21ed17192886e1c9da855") },
+    { $set: {"postResponses.1": "Did it for one response." } }
+)
+----
+
+.Result
+----
+{
+    "acknowledged" : true,
+    "matchedCount" : 1.0,
+    "modifiedCount" : 1.0
+}
 ----
 
 == Templates
