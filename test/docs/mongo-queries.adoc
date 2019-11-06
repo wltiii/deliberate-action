@@ -14,26 +14,11 @@ db.getCollection('sessions').find({})
 ----
 [
     {
-    "_id" : ObjectId("5db1e3afba5064296d76597c"),
-    "user" : NumberLong(0),
-    "template_id" : "default",
-    "startDateTime" : ISODate("2019-10-24T17:47:28.001Z"),
-    "endDateTime" : ISODate("2019-10-24T17:47:28.001Z"),
-    "preResponses" : [
-        "Provide a session example."
-    ],
-    "postResponses" : [
-        "I created a session.",
-        "Not applicable. Achieved my goal.",
-        "Figure out needs a bit better."
-    ]
-    },
-    {
-        "_id" : ObjectId("5db1f0d7e3fd62ea7a00eeb8"),
-        "user" : 0,
+        "_id" : ObjectId("5dbcc17ee7961fa7485918cc"),
+        "user" : NumberLong(0),
         "template_id" : "default",
-        "startDateTime" : "2019-10-24T18:28:01Z",
-        "endDateTime" : "2019-10-24T18:53:01Z",
+        "startDateTime" : ISODate("2019-10-24T18:00:00.000Z"),
+        "endDateTime" : ISODate("2019-10-24T18:45:00.000Z"),
         "preResponses" : [
             "Provide a session example."
         ],
@@ -44,11 +29,41 @@ db.getCollection('sessions').find({})
         ]
     },
     {
-        "_id" : ObjectId("5db1f1347d5faf33b58a2297"),
-        "user" : 1,
+        "_id" : ObjectId("5dbcc17ee7961fa7485918cd"),
+        "user" : NumberLong(1),
         "template_id" : "default",
-        "startDateTime" : "2019-10-24T18:28:01Z",
-        "endDateTime" : "2019-10-24T18:53:01Z",
+        "startDateTime" : ISODate("2019-10-25T09:00:00.000Z"),
+        "endDateTime" : ISODate("2019-10-25T09:45:00.000Z"),
+        "preResponses" : [
+            "Provide a session example."
+        ],
+        "postResponses" : [
+            "I created a session.",
+            "Not applicable. Achieved my goal.",
+            "Figure out needs a bit better."
+        ]
+    },
+    {
+        "_id" : ObjectId("5dbcc17ee7961fa7485918ce"),
+        "user" : NumberLong(1),
+        "template_id" : "default",
+        "startDateTime" : ISODate("2019-10-25T10:00:00.000Z"),
+        "endDateTime" : ISODate("2019-10-25T10:45:00.000Z"),
+        "preResponses" : [
+            "Provide a session example."
+        ],
+        "postResponses" : [
+            "I created a session.",
+            "Not applicable. Achieved my goal.",
+            "Figure out needs a bit better."
+        ]
+    },
+    {
+        "_id" : ObjectId("5dbcc17ee7961fa7485918cf"),
+        "user" : NumberLong(1),
+        "template_id" : "custom",
+        "startDateTime" : ISODate("2019-10-26T09:00:00.000Z"),
+        "endDateTime" : ISODate("2019-10-26T09:45:00.000Z"),
         "preResponses" : [
             "Provide a session example."
         ],
@@ -66,7 +81,66 @@ db.getCollection('sessions').find({})
 db.getCollection('sessions').insert({
     "user": NumberLong(0),
     "template_id": "default",
-    "startDateTime": new Date(),
+    "startDateTime": new Date("2019-10-24T18:00:00Z"),
+    "endDateTime": new Date("2019-10-24T18:45:00Z"),
+    "preResponses": [
+        "Provide a session example."
+    ],
+    "postResponses": [
+        "I created a session.",
+        "Not applicable. Achieved my goal.",
+        "Figure out needs a bit better."
+    ]
+})
+
+db.getCollection('sessions').insert({
+    "user": NumberLong(1),
+    "template_id": "default",
+    "startDateTime": new Date("2019-10-25T09:00:00Z"),
+    "endDateTime": new Date("2019-10-25T09:45:00Z"),
+    "preResponses": [
+        "Provide a session example."
+    ],
+    "postResponses": [
+        "I created a session.",
+        "Not applicable. Achieved my goal.",
+        "Figure out needs a bit better."
+    ]
+})
+
+db.getCollection('sessions').insert({
+    "user": NumberLong(1),
+    "template_id": "default",
+    "startDateTime": new Date("2019-10-25T10:00:00Z"),
+    "endDateTime": new Date("2019-10-25T10:45:00Z"),
+    "preResponses": [
+        "Provide a session example."
+    ],
+    "postResponses": [
+        "I created a session.",
+        "Not applicable. Achieved my goal.",
+        "Figure out needs a bit better."
+    ]
+})
+
+db.getCollection('sessions').insert({
+    "user": NumberLong(1),
+    "template_id": "custom",
+    "startDateTime": new Date("2019-10-26T09:00:00Z"),
+    "endDateTime": new Date("2019-10-26T09:45:00Z"),
+    "preResponses": [
+        "Provide a session example."
+    ],
+    "postResponses": [
+        "I created a session.",
+        "Not applicable. Achieved my goal.",
+        "Figure out needs a bit better."
+    ]
+})
+db.getCollection('sessions').insert({
+    "user": NumberLong(23),
+    "template_id": "default",
+    "startDateTime": new Date("2019-10-24T18:00:00Z"),
     "endDateTime": new Date(),
     "preResponses": [
         "Provide a session example."

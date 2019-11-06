@@ -45,8 +45,11 @@ keep it simple so that I may _learn_, _reflect_ and modify my _practice_.
 * Peak: Secrets from the New Science of Expertise by Anders Ericsson and Robert Pool
 
 
-
-// include::docs/FAQ.adoc[]
+== Getting Started
+. Start the Mongodb service: `sudo service mongod start`
+. Activate the envirornment (from the app directory): `source /home/worldwidewilly/workspace/deliberate-action/env/bin/activate`
+. Verify Python version (should be 3.6 or greater): `python --version`
+. Launch the application: `python app.py`
 
 == Considerations For Future Releases ==
 . A goal setting template? How would that work?

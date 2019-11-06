@@ -6,6 +6,7 @@ from bson.json_util import dumps
 from bson.objectid import ObjectId
 from flask import jsonify, request, json
 import logging
+
 logging.basicConfig(filename='app.log',level=logging.DEBUG, format='%(asctime)s %(message)s')
 
 app = Flask(__name__)
@@ -26,6 +27,7 @@ def templateList():
 @app.route('/templates/<id>')
 def templateById(id):
     logging.debug(f'templateById({id})')
+
     query = {
         "_id": ObjectId(id)
     }
@@ -58,9 +60,22 @@ def getDefaultTemplate():
 @app.route('/sessions')
 def sessionList():
     logging.debug('sessionList()')
-    sessions = mongo.db.sessions.find()
-    resp = dumps(sessions)
-    return Response(resp, mimetype='application/json')
+
+    domains = []
+    for doc in mongo.db.sessions.find():
+        domains.append(asDomainObj(doc))
+
+    # logging.debug(f'domains are {domains}')
+    dumpedDomains = dumps(domains)
+    # logging.debug(f'dumpedDomains are {dumpedDomains}')
+
+    # sessions = mongo.db.sessions.find()
+    # resp = dumps(sessions)
+    # logging.debug(f'resp are {resp}')
+    # for session in resp:
+    #     asDomainObj(session)
+
+    return Response(dumpedDomains, mimetype='application/json')
 
 @app.route('/sessions', methods=['POST'])
 def addSession():
@@ -121,6 +136,37 @@ def deleteSession(id):
 
     resp = dumps({ "deleted": f'{result.deleted_count}' })
     return Response(resp, mimetype='application/json')
+
+def asDomainObj(entity: dict):
+    logging.debug(f'asDomainObj({entity})')
+    # logging.debug(f'entity type is {type(entity)}')
+    # dumped = dumps(entity)
+    # logging.debug(f'dumped type is {type(dumped)}')
+    # logging.debug(f'dumped is {dumped}')
+    # logging.debug(f'entity id is {dumps(entity["_id"])}')
+    # logging.debug(f'startDateTime is {dumps(entity["startDateTime"])}')
+    # logging.debug(f'template_id is {entity["template_id"]}')
+    id = entity["_id"]
+    del(entity["_id"])
+    # logging.debug(f'_id is {str(id)}')
+    startDateTime = entity["startDateTime"].strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+    # logging.debug(f'startDateTime type is {type(startDateTime)}')
+    # logging.debug(f'startDateTime entity is {entity["startDateTime"]}')
+    # logging.debug(f'startDateTime entity string is {str(entity["startDateTime"])}')
+    # logging.debug(f'startDateTime string is {str(startDateTime)}')
+    # logging.debug(f'startDateTime is {startDateTime}')
+    endDateTime = entity["endDateTime"].strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+    # logging.debug(f'endDateTime entity is {entity["endDateTime"]}')
+    # logging.debug(f'endDateTime string is {str(endDateTime)}')
+    # logging.debug(f'endDateTime is {endDateTime}')
+    # formatted = endDateTime.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+    # logging.debug(f'formatted is {formatted}')
+     # logging.debug(f'entity after del of _id ({entity})')
+    entity["id"] = str(id)
+    entity["startDateTime"] = startDateTime
+    entity["endDateTime"] = endDateTime
+    # logging.debug(f'entity after add of id ({entity})')
+    return entity
 
 if __name__ == '__main__':
     app.run(debug=True)
