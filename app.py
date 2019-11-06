@@ -77,6 +77,15 @@ def sessionList():
 
     return Response(dumpedDomains, mimetype='application/json')
 
+@app.route('/sessions/<id>', methods=['GET'])
+def getSession(id):
+    logging.debug(f'getSession({id})')
+
+    query = {"_id": ObjectId(id)}
+    doc = mongo.db.sessions.find_one_or_404(query)
+
+    return Response(dumps(asDomainObj(doc)), mimetype='application/json')
+
 @app.route('/sessions', methods=['POST'])
 def addSession():
     logging.debug('addSession()')
@@ -98,7 +107,6 @@ def addSession():
     logging.debug(f'id is {id}')
     resp = dumps({ "id": f'{id}' })
     return Response(resp, mimetype='application/json')
-
 
 @app.route('/sessions/<id>', methods=['PUT'])
 def updateSession(id):
