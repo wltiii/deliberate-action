@@ -2,6 +2,13 @@
 .vscode/*
 .history/*
 
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+
 # Logs
 logs/*
 

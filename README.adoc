@@ -44,6 +44,7 @@ keep it simple so that I may _learn_, _reflect_ and modify my _practice_.
 * When: The Scientific Secrets of Perfect Timing by Daniel H. Pink
 * Peak: Secrets from the New Science of Expertise by Anders Ericsson and Robert Pool
 * https://www.estherderby.com/give-yourself-a-gift-reflection-time/
+* Project Retrospectives: A Handbook for Team Reviews by Norman L. Kerth
 
 
 == Getting Started
@@ -62,6 +63,11 @@ keep it simple so that I may _learn_, _reflect_ and modify my _practice_.
 .. Urgent/Important matrix - (Eisenhower & Covey)
 .. *Pre-mortem* (see Daniel Pink's When (ch3 I think))
 .. *Postmortem* (After action report)
+.. *Postmortem* (Kerth retrospective)
+... What did we do well that if we didn't discuss we might forget?
+... What did we learn?
+... What should we do differently next time?
+... What still puzzles us?
 .. Time Tracking
 .. Incorporates knowledge of Chronotypes
 . Activities that
